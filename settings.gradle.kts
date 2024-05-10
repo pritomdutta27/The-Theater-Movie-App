@@ -16,9 +16,12 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven(url = "https://jitpack.io")
+        maven(url = "https://oss.sonatype.org/content/repositories/snapshots/")
     }
 }
 
 rootProject.name = "The Theater Android App"
 include(":app")
- 
+include(":network:data")
+include(":network:domain")
