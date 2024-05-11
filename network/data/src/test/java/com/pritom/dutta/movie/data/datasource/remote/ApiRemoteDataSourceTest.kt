@@ -40,9 +40,11 @@ class ApiRemoteDataSourceTest{
         mockResponse.setBody("{\"results\": []}")
         mockWebServer.enqueue(mockResponse)
 
-        val response = sutApiRemoteDataSource.invoke()
-        mockWebServer.takeRequest()
-        assertEquals(true, response.first().items.isEmpty())
+        val response = sutApiRemoteDataSource.invoke().test {
+            val result = awaitItem()
+            assertEquals(true, result.items.isEmpty())
+            awaitComplete()
+        }
     }
 
 

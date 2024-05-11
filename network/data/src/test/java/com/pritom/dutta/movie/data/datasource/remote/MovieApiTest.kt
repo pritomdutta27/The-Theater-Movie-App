@@ -54,6 +54,8 @@ class MovieApiTest {
         val response = movieApiService.fetchTopRatedMovie(1)
         mockWebServer.takeRequest()
         Assert.assertEquals(false, response.body()?.items?.isEmpty())
+        Assert.assertEquals(true, response.isSuccessful)
+        Assert.assertEquals(200, response.code())
         Assert.assertEquals(4, response.body()?.items?.size)
     }
 

@@ -4,6 +4,12 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlinx.parcelize)
+    kotlin("plugin.allopen") version "1.9.23"
+}
+
+allOpen {
+    // kotlin class are default final, all-open plugin allow class to be mock by mockito
+    annotation ("pritom.dutta.test.OpenClass")
 }
 
 android {
