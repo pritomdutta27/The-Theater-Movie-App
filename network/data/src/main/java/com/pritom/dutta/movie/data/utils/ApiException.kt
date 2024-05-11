@@ -1,5 +1,6 @@
 package com.pritom.dutta.movie.data.utils
 
+import com.squareup.moshi.JsonClass
 import okhttp3.ResponseBody
 
 /**
@@ -15,3 +16,10 @@ class ApiException(
     val errorBody: ResponseBody?,
     override val message: String
 ) : Exception(message)
+
+@JsonClass(generateAdapter = true)
+data class Error(
+    val status_message: String? = null,
+    val status_code: Int? = 0,
+    val success: Boolean?,
+)

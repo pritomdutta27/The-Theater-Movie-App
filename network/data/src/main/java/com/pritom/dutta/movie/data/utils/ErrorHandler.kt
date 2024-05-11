@@ -26,7 +26,7 @@ object ErrorHandler {
             // if error response does not contain any specific message use a generic error message from resource
             return RequestException().apply {
                 this.message =
-                    apiError?.message ?: UNKNOWN_NETWORK_EXCEPTION
+                    apiError?.status_message ?: UNKNOWN_NETWORK_EXCEPTION
                 this.statusCode = statusCode
             }
         }

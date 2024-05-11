@@ -2,13 +2,17 @@ package com.pritom.dutta.movie.data.datasource.remote
 
 import app.cash.turbine.test
 import com.pritom.dutta.movie.data.helper.Helper
+import com.pritom.dutta.movie.data.utils.ApiException
+import com.pritom.dutta.movie.data.utils.RequestException
 import com.pritom.dutta.movie.data.utils.onException
 import com.pritom.dutta.movie.domain.utils.NetworkResult
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.onErrorReturn
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
+import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -62,23 +66,19 @@ class ApiRemoteDataSourceTest{
             awaitComplete()
         }
         mockWebServer.takeRequest()
-
     }
 
-//    @Test
-//    fun test_get_top_rated_movies_return_error() = runTest {
-//        val mockResponse = MockResponse()
-//        mockResponse.setResponseCode(404)
-//        mockResponse.setBody("Something went wrong")
-//        mockWebServer.enqueue(mockResponse)
-//
-//        val response = sutApiRemoteDataSource.invoke().onException().test {
-//            val result = awaitItem()
-////            assertEquals(true, result.isEmpty())
-//            assertEquals(404, result.code)
-//            awaitComplete()
-//        }
-//    }
+
+    @Test(expected = ApiException::class)
+    fun test_get_top_rated_movies_return_error() = runTest {
+        val mockResponse = MockResponse()
+        mockResponse.setResponseCode(401)
+        mockResponse.setBody("Something went wrong")
+        mockWebServer.enqueue(mockResponse)
+
+        sutApiRemoteDataSource.invoke().first()
+        mockWebServer.takeRequest()
+    }
 
 
     @After
