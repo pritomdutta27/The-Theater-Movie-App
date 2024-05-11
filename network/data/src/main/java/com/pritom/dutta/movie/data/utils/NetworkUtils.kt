@@ -50,27 +50,27 @@ fun <T : Any> Flow<T>.onException(): Flow<NetworkResult<T>> {
                 exception.errorBody,
                 exception.message
             )
-            emit(NetworkResult.Error(error.message))
+            emit(NetworkResult.Error(error.statusCode, error.message))
         } else {
             when (exception) {
                 is ConnectException -> {
-                    emit(NetworkResult.Error(CONNECT_EXCEPTION))
+                    emit(NetworkResult.Error(code = 404,message = CONNECT_EXCEPTION))
                 }
 
                 is UnknownHostException -> {
-                    emit(NetworkResult.Error(UNKNOWN_HOST_EXCEPTION))
+                    emit(NetworkResult.Error(code = 404,message = UNKNOWN_HOST_EXCEPTION))
                 }
 
                 is SocketTimeoutException -> {
-                    emit(NetworkResult.Error(SOCKET_TIME_OUT_EXCEPTION))
+                    emit(NetworkResult.Error(code = 404,message = SOCKET_TIME_OUT_EXCEPTION))
                 }
 
                 is HttpException -> {
-                    emit(NetworkResult.Error(UNKNOWN_NETWORK_EXCEPTION))
+                    emit(NetworkResult.Error(code = 404,message = UNKNOWN_NETWORK_EXCEPTION))
                 }
 
                 else -> {
-                    emit(NetworkResult.Error(UNKNOWN_NETWORK_EXCEPTION))
+                    emit(NetworkResult.Error(code = 404,message = UNKNOWN_NETWORK_EXCEPTION))
                 }
             }
 

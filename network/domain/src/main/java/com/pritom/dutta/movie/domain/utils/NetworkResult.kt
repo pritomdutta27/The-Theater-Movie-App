@@ -6,9 +6,12 @@ package com.pritom.dutta.movie.domain.utils
 
 sealed class NetworkResult<out T>(
     val data: T? = null,
+    val code: Int? = null,
     val message: String? = null
 ) {
     class Success<T>(data: T) : NetworkResult<T>(data)
-    class Error<T>(message: String?, data: T? = null) : NetworkResult<T>(data, message)
+    class Error<T>(code: Int? = 404, message: String?, data: T? = null) :
+        NetworkResult<T>(data, code, message)
+
     class Loading<T> : NetworkResult<T>()
 }

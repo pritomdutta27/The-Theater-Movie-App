@@ -1,6 +1,5 @@
-package com.pritom.dutta.movie.data
+package com.pritom.dutta.movie.data.datasource.remote
 
-import com.pritom.dutta.movie.data.datasource.remote.MovieApiService
 import com.pritom.dutta.movie.data.helper.Helper
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockResponse

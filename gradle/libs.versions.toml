@@ -34,6 +34,7 @@ sdpssp = "1.0.6"
 mockWebServer = "4.9.1"
 mockito = "3.8.0"
 assertj = "3.20.2"
+turbine = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -92,6 +93,7 @@ test_mockito = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 test_coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 test_mockitoAndroid = { module = "org.mockito:mockito-android", version.ref = "mockito" }
 test_assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
+test_flow_turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 #Dimension
 sdp = { module = "com.intuit.sdp:sdp-android", name = "sdp", version.ref = "sdpssp" }
