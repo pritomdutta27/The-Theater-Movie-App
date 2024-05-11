@@ -3,16 +3,11 @@ package com.pritom.dutta.movie.data.datasource.remote
 import app.cash.turbine.test
 import com.pritom.dutta.movie.data.helper.Helper
 import com.pritom.dutta.movie.data.utils.ApiException
-import com.pritom.dutta.movie.data.utils.RequestException
-import com.pritom.dutta.movie.data.utils.onException
-import com.pritom.dutta.movie.domain.utils.NetworkResult
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.onErrorReturn
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
-import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
