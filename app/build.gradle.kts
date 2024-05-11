@@ -1,6 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinx.parcelize)
+    alias(libs.plugins.hilt.android)
+    alias(libs.plugins.navigation.safeargs)
 }
 
 android {
@@ -50,11 +54,36 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(libs.sdp)
+    implementation(libs.ssp)
+
+    implementation (libs.androidx.navigation.fragment.ktx)
+    implementation (libs.navigation.ui.ktx)
+    implementation(libs.lifecycle.livedataKtx)
+    implementation(libs.lifecycle.viewmodel.ktx)
+
+    // Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.gson.gson)
+
+    //Glide
+    implementation(libs.glide)
+    ksp(libs.glide.ksp)
 
     //Own Module
     implementation(project(":network:data"))
     implementation(project(":network:domain"))
+
+    //Testing Library
+    testImplementation(libs.junit)
+    testImplementation(libs.test.mockWebServer)
+    testImplementation(libs.test.mockito)
+    testImplementation(libs.test.assertj)
+    testImplementation(libs.test.flow.turbine)
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+    testImplementation(libs.test.coroutines)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }

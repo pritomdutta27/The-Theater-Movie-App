@@ -1,4 +1,4 @@
-package com.pritom.dutta.movie.data.helper
+package com.pritom.dutta.the.theater.utils
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

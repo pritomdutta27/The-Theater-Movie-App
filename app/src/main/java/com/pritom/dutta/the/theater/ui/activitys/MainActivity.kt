@@ -1,10 +1,11 @@
-package com.pritom.dutta.the.theater
+package com.pritom.dutta.the.theater.ui.activitys
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.pritom.dutta.the.theater.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
