@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/movieFragment"
         android:title=""
         app:showAsAction="ifRoom"
         android:enabled="true"

@@ -1,16 +1,16 @@
 [versions]
-agp = "8.5.0"
+agp = "8.5.2"
 kotlin = "1.9.23"
 coreKtx = "1.13.1"
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
-appcompat = "1.6.1"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
 material = "1.12.0"
-activity = "1.9.0"
+activity = "1.9.1"
 constraintlayout = "2.1.4"
-lifecycle = "2.7.0"
-lifecycle-viewmodel-ktx = "2.7.0"
+lifecycle = "2.8.4"
+lifecycle-viewmodel-ktx = "2.8.4"
 navigation-fragment-ktx = "2.7.7"
 navigation-ui-ktx = "2.7.7"
 
@@ -27,7 +27,7 @@ kotlinPlugin = "1.8.10"
 #Glide
 glide = "4.16.0"
 #hilt
-hilt-version = "2.48"
+hilt-version = "2.48.1"
 sdpssp = "1.0.6"
 
 #testing
@@ -35,6 +35,7 @@ mockWebServer = "4.9.1"
 mockito = "3.8.0"
 assertj = "3.20.2"
 turbine = "1.1.0"
+viewbinding = "8.5.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -98,6 +99,7 @@ test_flow_turbine = { module = "app.cash.turbine:turbine", version.ref = "turbin
 #Dimension
 sdp = { module = "com.intuit.sdp:sdp-android", name = "sdp", version.ref = "sdpssp" }
 ssp = { module = "com.intuit.ssp:ssp-android", name = "ssp", version.ref = "sdpssp" }
+androidx-viewbinding = { group = "androidx.databinding", name = "viewbinding", version.ref = "viewbinding" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

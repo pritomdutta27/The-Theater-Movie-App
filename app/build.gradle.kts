@@ -45,6 +45,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -76,6 +80,8 @@ dependencies {
     implementation(project(":network:data"))
     implementation(project(":network:domain"))
     implementation(project(":assets"))
+
+    implementation(project(":features:movies"))
 
     //Testing Library
     testImplementation(libs.junit)
