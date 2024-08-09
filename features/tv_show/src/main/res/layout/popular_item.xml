@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cl_image"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_100sdp"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/poster" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/cl_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cl_image"
+        app:layout_constraintTop_toTopOf="@+id/cl_image">
+
+        <TextView
+            android:id="@+id/txt_movie_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/mulish_bold"
+            android:maxLines="2"
+            android:text="Spiderman: No Way Home"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp" />
+
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip"
+                style="@style/Widget.MaterialComponents.Chip.Action"
+                android:backgroundTint="#DBE3FF"
+                android:textSize="@dimen/_9ssp"
+                android:textColor="#88A4E8"
+                android:fontFamily="@font/mulish_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_35sdp"
+                android:text="HORROR"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip2"
+                style="@style/Widget.MaterialComponents.Chip.Action"
+                android:backgroundTint="#DBE3FF"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/mulish_regular"
+                android:textSize="@dimen/_9ssp"
+                android:textColor="#88A4E8"
+                android:layout_height="@dimen/_35sdp"
+                android:text="MYSTERY"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip4"
+                style="@style/Widget.MaterialComponents.Chip.Action"
+                android:backgroundTint="#DBE3FF"
+                android:textSize="@dimen/_9ssp"
+                android:fontFamily="@font/mulish_regular"
+                android:layout_width="wrap_content"
+                android:textColor="#88A4E8"
+                android:layout_height="@dimen/_35sdp"
+                android:text="THRILLER"/>
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_4sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/is_premium"
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                app:srcCompat="@drawable/star_ic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:ellipsize="end"
+                android:fontFamily="@font/mulish_regular"
+                android:lines="1"
+                android:textColor="@color/gray_see_more"
+                android:textSize="@dimen/_11ssp"
+                android:layout_marginStart="@dimen/_2sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_image"
+                android:text="9.1/10 IMDb" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:ellipsize="end"
+            android:fontFamily="@font/mulish_regular"
+            android:lines="1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11ssp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:drawablePadding="@dimen/_2sdp"
+            android:layout_marginStart="@dimen/_2sdp"
+            app:drawableStartCompat="@drawable/time"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_image"
+            android:text="1h 47m" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -82,6 +82,8 @@ dependencies {
     implementation(project(":assets"))
 
     implementation(project(":features:movies"))
+    implementation(project(":features:tv_show"))
+    implementation(project(":features:settings"))
 
     //Testing Library
     testImplementation(libs.junit)

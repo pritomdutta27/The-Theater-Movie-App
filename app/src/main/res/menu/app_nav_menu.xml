@@ -10,14 +10,14 @@
         android:icon="@drawable/movie_nav_ic" />
 
     <item
-        android:id="@+id/updateInformationFragment2"
+        android:id="@+id/tvShowFragment"
         app:showAsAction="ifRoom"
         android:title=""
         android:enabled="true"
         android:icon="@drawable/tv_series_nav_ic" />
 
     <item
-        android:id="@+id/qr"
+        android:id="@+id/settingsFragment"
         app:showAsAction="ifRoom"
         android:title=""
         android:enabled="true"

@@ -1,0 +1,8 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_now_showing">TV Now Showing</string>
+    <string name="tv_see_more">See more</string>
+    <string name="tv_popular">TV Popular</string>
+    <string name="tv_trending">TV Trending</string>
+</resources>
