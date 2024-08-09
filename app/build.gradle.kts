@@ -75,6 +75,7 @@ dependencies {
     //Own Module
     implementation(project(":network:data"))
     implementation(project(":network:domain"))
+    implementation(project(":assets"))
 
     //Testing Library
     testImplementation(libs.junit)

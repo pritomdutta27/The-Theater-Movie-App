@@ -47,13 +47,12 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
 
-    implementation(libs.timber)
-
     //network lib
     implementation(libs.bundles.networking)
     implementation(libs.okhttp.interceptor){
         exclude(group = "org.json", module = "json")
     }
+    implementation(libs.timber)
 
     // Hilt
     implementation(libs.hilt.android)

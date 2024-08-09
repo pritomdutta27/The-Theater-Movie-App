@@ -32,12 +32,9 @@ class TopRatedMovieRepositoryImpTest {
     @Mock
     lateinit var sutApi: TopRatedMovieRepositoryImp
 
-//    private lateinit var sutTopRatedMovieRepository: TopRatedMovieRepositoryImp
-
     @Before
     fun setUp() {
         MockitoAnnotations.openMocks(this)
-//        sutTopRatedMovieRepository = TopRatedMovieRepositoryImp(sutApi)
     }
 
     @Test
