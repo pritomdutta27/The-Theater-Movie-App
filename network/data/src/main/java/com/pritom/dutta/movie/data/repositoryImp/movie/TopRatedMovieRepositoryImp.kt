@@ -1,12 +1,8 @@
-package com.pritom.dutta.movie.data.repositoryImp
+package com.pritom.dutta.movie.data.repositoryImp.movie
 
 import com.pritom.dutta.movie.data.datasource.remote.ApiRemoteDataSource
 import com.pritom.dutta.movie.data.utils.onException
-import com.pritom.dutta.movie.domain.models.Movie
-import com.pritom.dutta.movie.domain.models.TmdbWrapperModel
-import com.pritom.dutta.movie.domain.repository.TopRatedMovieRepository
-import com.pritom.dutta.movie.domain.utils.NetworkResult
-import kotlinx.coroutines.flow.Flow
+import com.pritom.dutta.movie.domain.repository.movie.TopRatedMovieRepository
 import pritom.dutta.test.OpenForTesting
 import javax.inject.Inject
 

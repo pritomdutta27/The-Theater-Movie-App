@@ -1,7 +1,11 @@
 package com.pritom.dutta.movie.data.di
 
-import com.pritom.dutta.movie.data.repositoryImp.TopRatedMovieRepositoryImp
-import com.pritom.dutta.movie.domain.repository.TopRatedMovieRepository
+import com.pritom.dutta.movie.data.repositoryImp.movie.NowShowingMovieRepositoryImp
+import com.pritom.dutta.movie.data.repositoryImp.movie.TopRatedMovieRepositoryImp
+import com.pritom.dutta.movie.data.repositoryImp.movie.TrendingRepositoryImp
+import com.pritom.dutta.movie.domain.repository.movie.NowShowingMovieRepository
+import com.pritom.dutta.movie.domain.repository.movie.TopRatedMovieRepository
+import com.pritom.dutta.movie.domain.repository.movie.TrendingRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -19,5 +23,13 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun provideTopRatedMovieRepository(api: TopRatedMovieRepositoryImp): TopRatedMovieRepository
+
+    @Binds
+    @Singleton
+    abstract fun provideNowShowingMovieRepository(api: NowShowingMovieRepositoryImp): NowShowingMovieRepository
+
+    @Binds
+    @Singleton
+    abstract fun provideTrendingRepository(api: TrendingRepositoryImp): TrendingRepository
 
 }

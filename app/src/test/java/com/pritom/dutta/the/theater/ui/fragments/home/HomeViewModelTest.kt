@@ -1,7 +1,7 @@
 package com.pritom.dutta.the.theater.ui.fragments.home
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.pritom.dutta.movie.domain.repository.TopRatedMovieRepository
+import com.pritom.dutta.movie.domain.repository.movie.TopRatedMovieRepository
 import com.pritom.dutta.movie.domain.utils.NetworkResult
 import com.pritom.dutta.the.theater.utils.Helper
 import com.pritom.dutta.the.theater.utils.getOrAwaitValue

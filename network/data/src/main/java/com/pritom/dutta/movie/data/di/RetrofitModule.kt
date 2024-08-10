@@ -3,6 +3,7 @@ package com.pritom.dutta.movie.data.di
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.pritom.dutta.movie.data.datasource.remote.MovieApiService
+import com.pritom.dutta.movie.data.datasource.remote.TvSeriesService
 import com.pritom.dutta.movie.data.di.annotations.AppBaseUrl
 import dagger.Module
 import dagger.Provides
@@ -29,7 +30,8 @@ object RetrofitModule {
         okHttpClient: OkHttpClient,
         gson: Gson,
     ): Retrofit {
-        return Retrofit.Builder().baseUrl(baseUrl)
+        return Retrofit.Builder()
+            .baseUrl(baseUrl)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJavaCallAdapterFactory.create()).build()
@@ -45,5 +47,11 @@ object RetrofitModule {
     @Singleton
     fun provideApiService(@AppBaseUrl retrofit: Retrofit): MovieApiService {
         return retrofit.create(MovieApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTvSeriesService(@AppBaseUrl retrofit: Retrofit): TvSeriesService {
+        return retrofit.create(TvSeriesService::class.java)
     }
 }

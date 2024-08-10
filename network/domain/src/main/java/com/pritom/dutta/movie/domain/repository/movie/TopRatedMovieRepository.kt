@@ -1,4 +1,4 @@
-package com.pritom.dutta.movie.domain.repository
+package com.pritom.dutta.movie.domain.repository.movie
 
 import com.pritom.dutta.movie.domain.models.Movie
 import com.pritom.dutta.movie.domain.models.TmdbWrapperModel

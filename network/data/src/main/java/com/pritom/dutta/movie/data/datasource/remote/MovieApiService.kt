@@ -15,6 +15,12 @@ interface MovieApiService {
     @GET("movie/popular?api_key=${DataSourceConstants.API_KEY}&language=en-US")
     suspend fun fetchTopRatedMovie(@Query("page") page: Int): Response<TmdbWrapperModel<Movie>>
 
+    @GET("movie/now_playing?api_key=${DataSourceConstants.API_KEY}&language=en-US")
+    suspend fun fetchNowShowingMovie(@Query("page") page: Int): Response<TmdbWrapperModel<Movie>>
+
+    @GET("trending/movie/day?api_key=${DataSourceConstants.API_KEY}&language=en-US")
+    suspend fun fetchTrendingMovie(@Query("page") page: Int): Response<TmdbWrapperModel<Movie>>
+
 //    @GET("movie/{id}?api_key=${DataSourceConstants.API_KEY}&language=en-US")
 //    suspend fun fetchMovieDetails(@Path("id") id: Int): NetworkResult<MovieDetails>
 }

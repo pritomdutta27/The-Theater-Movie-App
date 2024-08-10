@@ -6,11 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pritom.dutta.movie.domain.models.Movie
 import com.pritom.dutta.movie.domain.models.TmdbWrapperModel
-import com.pritom.dutta.movie.domain.repository.TopRatedMovieRepository
+import com.pritom.dutta.movie.domain.repository.movie.TopRatedMovieRepository
 import com.pritom.dutta.movie.domain.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

@@ -1,5 +1,6 @@
 package com.pritom.dutta.movie.data.utils
 
+import com.google.gson.Gson
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import okhttp3.ResponseBody
@@ -18,10 +19,9 @@ object ErrorHandler {
         message: String? = null
     ): RequestException {
         errorBody?.let { body ->
-            val moshi = Moshi.Builder()
-                .build()
-            val jsonAdapter: JsonAdapter<Error> = moshi.adapter(Error::class.java)
-            val apiError = jsonAdapter.fromJson(body.string())
+            val moshi = Gson()
+//            val jsonAdapter: JsonAdapter<Error> = moshi.adapter(Error::class.java)
+            val apiError = moshi.fromJson(body.string(), Error::class.java)
 
             // if error response does not contain any specific message use a generic error message from resource
             return RequestException().apply {
