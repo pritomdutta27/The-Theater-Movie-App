@@ -43,6 +43,7 @@ data class TVShow(
     override val posterUrl: String?,
     @SerializedName("backdrop_path")
     override val backdropUrl: String?,
+    @SerializedName("name")
     override val title: String,
     @SerializedName("vote_average")
     override val voteAverage: Double

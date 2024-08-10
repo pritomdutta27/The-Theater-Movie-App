@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pritom.assets.base_adapter.BaseListAdapter
+import com.pritom.dutta.movie.domain.models.Movie
+import com.pritom.dutta.movie.domain.models.TVShow
 
 class PopularAdapter() :
-    BaseListAdapter<String>(
+    BaseListAdapter<TVShow>(
         itemsSame = { old, new -> old == new },
         contentsSame = { old, new -> old == new }) {
     override fun onCreateViewHolder(
@@ -15,12 +17,10 @@ class PopularAdapter() :
         viewType: Int
     ) = PopularViewHolder(inflater, parent)
 
-    override fun getItemCount() = 4
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
             is PopularViewHolder->{
-                holder.bind()
+                holder.bind(getItem(position))
             }
         }
     }

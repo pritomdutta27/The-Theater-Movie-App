@@ -19,8 +19,8 @@ enum class SortType : Parcelable {
     DISCOVER
 }
 
-class FeedWrapper(
-    val feeds: Flow<NetworkResult<TmdbWrapperModel<Movie>>>,
+class FeedWrapper<T>(
+    val feeds: Flow<NetworkResult<TmdbWrapperModel<T>>>,
     @StringRes val sortTypeResourceId: Int,
     val sortType: SortType
 )

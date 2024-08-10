@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/movie_poster_img"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
@@ -37,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="@+id/cl_image"
         app:layout_constraintStart_toStartOf="@+id/cl_image"
         app:layout_constraintTop_toBottomOf="@+id/cl_image"
-        android:text="Spiderman: No Way Home" />
+        tools:text="Spiderman: No Way Home" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="0dp"
@@ -57,6 +58,7 @@
             app:srcCompat="@drawable/star_ic" />
 
         <TextView
+            android:id="@+id/txt_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -70,7 +72,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_image"
-            android:text="9.1/10 IMDb" />
+            tools:text="9.1/10 IMDb" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

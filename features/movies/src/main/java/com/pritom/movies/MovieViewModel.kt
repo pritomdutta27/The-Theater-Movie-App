@@ -27,8 +27,8 @@ class MovieViewModel @Inject constructor(
     private val repositoryTrending: TrendingRepository,
 ) : ViewModel()  {
 
-    private val _movies = MutableLiveData<List<FeedWrapper>>()
-    val movies: LiveData<List<FeedWrapper>>
+    private val _movies = MutableLiveData<List<FeedWrapper<Movie>>>()
+    val movies: LiveData<List<FeedWrapper<Movie>>>
         get() = _movies
 
     fun getMovies() {

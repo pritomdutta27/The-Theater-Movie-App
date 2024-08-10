@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pritom.assets.base_adapter.BaseListAdapter
+import com.pritom.dutta.movie.domain.models.Movie
+import com.pritom.dutta.movie.domain.models.TVShow
 
 class NowShowingAdapter() :
-    BaseListAdapter<String>(
+    BaseListAdapter<TVShow>(
         itemsSame = { old, new -> old == new },
         contentsSame = { old, new -> old == new }) {
     override fun onCreateViewHolder(
@@ -15,12 +17,10 @@ class NowShowingAdapter() :
         viewType: Int
     ) = NowShowingViewHolder(inflater, parent)
 
-    override fun getItemCount() = 8
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
             is NowShowingViewHolder->{
-                holder.bind()
+                holder.bind(getItem(position))
             }
         }
     }
