@@ -53,11 +53,11 @@
                 android:id="@+id/chip"
                 style="@style/Widget.MaterialComponents.Chip.Action"
                 android:backgroundTint="#DBE3FF"
-                android:textSize="@dimen/_9ssp"
+                android:textSize="@dimen/_6ssp"
                 android:textColor="#88A4E8"
                 android:fontFamily="@font/mulish_regular"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_35sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:text="HORROR"/>
 
             <com.google.android.material.chip.Chip
@@ -66,20 +66,20 @@
                 android:backgroundTint="#DBE3FF"
                 android:layout_width="wrap_content"
                 android:fontFamily="@font/mulish_regular"
-                android:textSize="@dimen/_9ssp"
+                android:textSize="@dimen/_6ssp"
                 android:textColor="#88A4E8"
-                android:layout_height="@dimen/_35sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:text="MYSTERY"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip4"
                 style="@style/Widget.MaterialComponents.Chip.Action"
                 android:backgroundTint="#DBE3FF"
-                android:textSize="@dimen/_9ssp"
+                android:textSize="@dimen/_6ssp"
                 android:fontFamily="@font/mulish_regular"
                 android:layout_width="wrap_content"
                 android:textColor="#88A4E8"
-                android:layout_height="@dimen/_35sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:text="THRILLER"/>
 
         </com.google.android.material.chip.ChipGroup>

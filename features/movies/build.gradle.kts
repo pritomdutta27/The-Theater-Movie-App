@@ -44,6 +44,8 @@ dependencies {
     implementation(libs.sdp)
     implementation(libs.ssp)
 
+    implementation(libs.androidx.recyclerview)
+
     implementation(project(":assets"))
 
     //Test

@@ -7,7 +7,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MovieFragment">
 
-    <androidx.core.widget.NestedScrollView
+    <com.pritom.assets.ui.SaveScrollNestedScrollViewer
+        android:id="@+id/movie_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -194,7 +195,7 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </androidx.core.widget.NestedScrollView>
+    </com.pritom.assets.ui.SaveScrollNestedScrollViewer>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
