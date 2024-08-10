@@ -57,7 +57,7 @@ class TvShowFragment : Fragment() {
 
         binding?.rvTrending?.apply {
             addItemDecoration(EqualSpacingItemDecoration(20))
-            adapter = popularAdapter
+            adapter = trendingAdapter
         }
 
         viewModel.getTvSeries()

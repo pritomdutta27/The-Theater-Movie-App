@@ -46,7 +46,7 @@ class TvSeriesViewModel @Inject constructor(
             }
 
             _tvSeries.postValue(listOf(
-                FeedWrapper(nowPlayingDeferred.await(), R.string.tv_now_showing, SortType.NOW_PLAYING),
+                FeedWrapper(nowPlayingDeferred.await(), R.string.on_the_air, SortType.NOW_PLAYING),
                 FeedWrapper(popularDeferred.await(), R.string.tv_popular, SortType.MOST_POPULAR),
                 FeedWrapper(trendingDeferred.await(), R.string.tv_trending, SortType.TRENDING),
             ))
