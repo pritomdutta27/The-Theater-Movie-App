@@ -15,4 +15,8 @@
         <item name="paddingStart">@dimen/_20sdp</item>
         <item name="paddingEnd">@dimen/_20sdp</item>
     </style>
+
+    <style name="RoundedSquare">
+        <item name="cornerSize">10%</item>
+    </style>
 </resources>

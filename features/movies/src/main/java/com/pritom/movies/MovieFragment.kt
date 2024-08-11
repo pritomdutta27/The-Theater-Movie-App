@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.my.esheba.helper.EqualSpacingItemDecoration
 import com.pritom.dutta.movie.data.SortType
@@ -30,7 +31,9 @@ class MovieFragment : Fragment() {
     private var binding: FragmentMovieBinding? = null
     private val viewModel: MovieViewModel by viewModels()
 
-    private val nowShowingAdapter: NowShowingAdapter by lazy { NowShowingAdapter() }
+    private val nowShowingAdapter: NowShowingAdapter by lazy { NowShowingAdapter{
+//        findNavController().navigate(R.id.)
+    } }
     private val popularAdapter: PopularAdapter by lazy { PopularAdapter() }
     private val trendingAdapter: PopularAdapter by lazy { PopularAdapter() }
     private var myScrollViewerInstanceState: Parcelable? = null

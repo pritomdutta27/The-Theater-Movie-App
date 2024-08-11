@@ -30,6 +30,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -37,6 +40,20 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+
+    implementation(libs.sdp)
+    implementation(libs.ssp)
+
+    implementation (libs.androidx.navigation.fragment.ktx)
+    implementation (libs.navigation.ui.ktx)
+    implementation(libs.lifecycle.livedataKtx)
+    implementation(libs.lifecycle.viewmodel.ktx)
+
+    //Own Module
+    implementation(project(":network:data"))
+    implementation(project(":network:domain"))
+    implementation(project(":assets"))
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

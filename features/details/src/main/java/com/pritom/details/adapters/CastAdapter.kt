@@ -1,4 +1,4 @@
-package com.pritom.movies.adpaters.now_show
+package com.pritom.details.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pritom.assets.base_adapter.BaseListAdapter
 import com.pritom.dutta.movie.domain.models.Movie
 
-class NowShowingAdapter(private val onClick: () -> Unit) :
+class CastAdapter() :
     BaseListAdapter<Movie>(
         itemsSame = { old, new -> old == new },
         contentsSame = { old, new -> old == new }) {
@@ -14,12 +14,16 @@ class NowShowingAdapter(private val onClick: () -> Unit) :
         parent: ViewGroup,
         inflater: LayoutInflater,
         viewType: Int
-    ) = NowShowingViewHolder(inflater, parent)
+    ) = CastViewHolder(inflater, parent)
+
+    override fun getItemCount(): Int {
+        return 6
+    }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (holder) {
-            is NowShowingViewHolder -> {
-                holder.bind(getItem(position), onClick)
+        when(holder){
+            is CastViewHolder->{
+                holder.bind()
             }
         }
     }

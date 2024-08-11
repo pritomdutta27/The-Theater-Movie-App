@@ -84,6 +84,7 @@ dependencies {
     implementation(project(":features:movies"))
     implementation(project(":features:tv_show"))
     implementation(project(":features:settings"))
+    implementation(project(":features:details"))
 
     //Testing Library
     testImplementation(libs.junit)
