@@ -32,7 +32,7 @@ class MovieFragment : Fragment() {
     private val viewModel: MovieViewModel by viewModels()
 
     private val nowShowingAdapter: NowShowingAdapter by lazy { NowShowingAdapter{
-//        findNavController().navigate(R.id.)
+        findNavController().navigate(R.id.action_movieFragment_to_detailsFragment)
     } }
     private val popularAdapter: PopularAdapter by lazy { PopularAdapter() }
     private val trendingAdapter: PopularAdapter by lazy { PopularAdapter() }

@@ -7,7 +7,7 @@ import com.pritom.assets.base_adapter.BaseListAdapter
 import com.pritom.dutta.movie.domain.models.Movie
 import com.pritom.dutta.movie.domain.models.TVShow
 
-class NowShowingAdapter() :
+class NowShowingAdapter(private val onClick: () -> Unit) :
     BaseListAdapter<TVShow>(
         itemsSame = { old, new -> old == new },
         contentsSame = { old, new -> old == new }) {
@@ -20,7 +20,7 @@ class NowShowingAdapter() :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
             is NowShowingViewHolder->{
-                holder.bind(getItem(position))
+                holder.bind(getItem(position), onClick)
             }
         }
     }

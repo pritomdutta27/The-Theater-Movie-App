@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.my.esheba.helper.EqualSpacingItemDecoration
 import com.pritom.dutta.movie.data.SortType
 import com.pritom.dutta.movie.domain.utils.NetworkResult
@@ -25,7 +26,11 @@ class TvShowFragment : Fragment() {
     private var binding: FragmentTvShowBinding? = null
     private val viewModel: TvSeriesViewModel by viewModels()
 
-    private val nowShowingAdapter: NowShowingAdapter by lazy { NowShowingAdapter() }
+    private val nowShowingAdapter: NowShowingAdapter by lazy {
+        NowShowingAdapter {
+            findNavController().navigate(R.id.action_tvShowFragment_to_detailsFragment)
+        }
+    }
     private val popularAdapter: PopularAdapter by lazy { PopularAdapter() }
     private val trendingAdapter: PopularAdapter by lazy { PopularAdapter() }
     private var myScrollViewerInstanceState: Parcelable? = null

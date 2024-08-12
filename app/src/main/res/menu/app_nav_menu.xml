@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/movieFragment"
+        android:id="@+id/nav_movies"
         android:title=""
         app:showAsAction="ifRoom"
         android:enabled="true"
         android:icon="@drawable/movie_nav_ic" />
 
     <item
-        android:id="@+id/tvShowFragment"
+        android:id="@+id/nav_tv_series"
         app:showAsAction="ifRoom"
         android:title=""
         android:enabled="true"
         android:icon="@drawable/tv_series_nav_ic" />
 
     <item
-        android:id="@+id/settingsFragment"
+        android:id="@+id/nav_settings"
         app:showAsAction="ifRoom"
         android:title=""
         android:enabled="true"

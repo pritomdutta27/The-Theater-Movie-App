@@ -60,6 +60,7 @@ dependencies {
 
     //Own Module
     implementation(project(":assets"))
+    implementation(project(":features:details"))
     implementation(project(":network:data"))
     implementation(project(":network:domain"))
 

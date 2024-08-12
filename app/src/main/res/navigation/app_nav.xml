@@ -3,35 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_nav"
-    app:startDestination="@id/movieFragment">
+    app:startDestination="@id/nav_movies">
 
-    <fragment
-        android:id="@+id/movieFragment"
-        android:name="com.pritom.movies.MovieFragment"
-        android:label="MovieFragment"
-        tools:layout="@layout/fragment_movie">
-        <action
-            android:id="@+id/action_movieFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-    </fragment>
+    <include app:graph="@navigation/nav_movies" />
+    <include app:graph="@navigation/nav_tv_series" />
+    <include app:graph="@navigation/nav_settings" />
 
-    <fragment
-        android:id="@+id/tvShowFragment"
-        android:name="com.pritom.tv_show.TvShowFragment"
-        android:label="TvShowFragment"
-        tools:layout="@layout/fragment_tv_show">
-        <action
-            android:id="@+id/action_tvShowFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.pritom.settings.SettingsFragment"
-        android:label="SettingsFragment"
-        tools:layout="@layout/fragment_settings"/>
-    <fragment
-        android:id="@+id/detailsFragment"
-        android:name="com.pritom.details.DetailsFragment"
-        android:label="DetailsFragment"
-        tools:layout="@layout/fragment_details"/>
 </navigation>
