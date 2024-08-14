@@ -77,7 +77,6 @@ class TvShowFragment : Fragment() {
             adapter = trendingAdapter
             setHasFixedSize(true)
         }
-
         apiResponse()
     }
 

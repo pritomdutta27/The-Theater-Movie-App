@@ -10,11 +10,13 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:enableOnBackInvokedCallback="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:name=".core.TheaterMovieApp"
+        android:hardwareAccelerated="true"
         android:theme="@style/Theme.TheTheaterAndroidApp"
-        tools:targetApi="31">
+        tools:targetApi="tiramisu">
         <activity
             android:name=".ui.activitys.MainActivity"
             android:exported="true">

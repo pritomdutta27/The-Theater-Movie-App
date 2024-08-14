@@ -105,7 +105,6 @@ class MovieFragment : Fragment() {
             data.onEach { movieRes ->
                 lifecycleScope.launch {
                     movieRes.feeds.collect { response ->
-                        Log.e("NowShowingViewHolder", "bind: ${response.data?.items?.size}")
                         when (response) {
                             is NetworkResult.Error -> {
                                 Toast.makeText(
