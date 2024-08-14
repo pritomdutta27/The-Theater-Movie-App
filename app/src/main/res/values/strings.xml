@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Movie Zone</string>
+    <string name="turn_on_wifi">TURN ON WIFI</string>
+    <string name="you_have_lost_connection">You have lost connection to the internet.\nThis app is offline</string>
 </resources>
