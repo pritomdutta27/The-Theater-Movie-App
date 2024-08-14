@@ -74,11 +74,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
 
     private fun backPressed() {
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {

@@ -12,12 +12,26 @@
                motion:motionTarget="@+id/my_toolbar"
                motion:framePosition="70"
                android:alpha="0" />
+
+           <KeyAttribute
+               motion:motionTarget="@+id/appCompatImageView"
+               motion:framePosition="100"
+               android:alpha="0" />
+
            <KeyAttribute
                motion:motionTarget="@+id/txt_movie_title"
-               motion:framePosition="70"
+               motion:framePosition="30"
+               android:alpha="0" />
+           <KeyAttribute
+               motion:motionTarget="@+id/txt_movie_title"
+               motion:framePosition="50"
+               android:alpha="0" />
+           <KeyAttribute
+               motion:motionTarget="@+id/txt_movie_title"
+               motion:framePosition="100"
                android:alpha="0" />
        </KeyFrameSet>
-        <OnSwipe motion:touchAnchorId="@+id/nestedScrollView2" motion:maxAcceleration="17.36"/>
+        <OnSwipe motion:touchAnchorId="@+id/nestedScrollView2" motion:maxAcceleration="59.13"/>
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
@@ -31,13 +45,13 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:id="@+id/nestedScrollView2" />
         <Constraint
             android:id="@+id/appCompatImageView"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_250sdp"
+            android:layout_height="0dp"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             android:alpha="0" />
@@ -64,7 +78,8 @@
             motion:layout_constraintBottom_toTopOf="@+id/nestedScrollView2"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            android:alpha="1"/>
+            android:alpha="1"
+            motion:transitionEasing="standard" />
 
     </ConstraintSet>
 </MotionScene>
