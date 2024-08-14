@@ -49,9 +49,7 @@ class MainActivity : AppCompatActivity() {
                 com.pritom.settings.R.navigation.nav_settings
             )
         )
-
         binding?.bottomNavigationBar?.setupWithNavController(navController)
-
         // reselect back to home destination
         binding?.bottomNavigationBar?.setOnItemReselectedListener { item ->
             when (item.itemId) {
@@ -91,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                     } else {
                         Snackbar.make(
                             binding?.main!!,
-                            "Press back again to leave the app.",
+                            getString(R.string.press_back_again),
                             Snackbar.LENGTH_LONG
                         ).show()
                     }
