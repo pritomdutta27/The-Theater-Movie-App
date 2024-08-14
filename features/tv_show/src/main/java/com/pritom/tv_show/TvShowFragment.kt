@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -18,7 +19,9 @@ import com.pritom.tv_show.adpaters.now_show.NowShowingAdapter
 import com.pritom.tv_show.adpaters.popular.PopularAdapter
 import com.pritom.tv_show.databinding.FragmentTvShowBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
 class TvShowFragment : Fragment() {
@@ -35,6 +38,11 @@ class TvShowFragment : Fragment() {
     private val trendingAdapter: PopularAdapter by lazy { PopularAdapter() }
     private var myScrollViewerInstanceState: Parcelable? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getTvSeries()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,6 +53,8 @@ class TvShowFragment : Fragment() {
         if (myScrollViewerInstanceState != null) {
             binding?.scrollTv?.onRestoreInstanceState(myScrollViewerInstanceState)
         }
+        binding?.shimmerFrameLayout?.isVisible = myScrollViewerInstanceState == null
+        binding?.scrollTv?.isVisible = myScrollViewerInstanceState != null
         return binding?.root
     }
 
@@ -53,19 +63,21 @@ class TvShowFragment : Fragment() {
         binding?.rvNowShowing?.apply {
             addItemDecoration(EqualSpacingItemDecoration(0))
             adapter = nowShowingAdapter
+            setHasFixedSize(true)
         }
 
         binding?.rvPopular?.apply {
             addItemDecoration(EqualSpacingItemDecoration(20))
             adapter = popularAdapter
+            setHasFixedSize(true)
         }
 
         binding?.rvTrending?.apply {
             addItemDecoration(EqualSpacingItemDecoration(20))
             adapter = trendingAdapter
+            setHasFixedSize(true)
         }
 
-        viewModel.getTvSeries()
         apiResponse()
     }
 
@@ -83,8 +95,15 @@ class TvShowFragment : Fragment() {
                                 ).show()
                             }
 
-                            is NetworkResult.Loading -> {}
+                            is NetworkResult.Loading -> {
+                                binding?.shimmerFrameLayout?.isVisible = true
+                                binding?.scrollTv?.isVisible = false
+                            }
                             is NetworkResult.Success -> {
+                                withContext(Dispatchers.Main) {
+                                    binding?.shimmerFrameLayout?.isVisible = false
+                                    binding?.scrollTv?.isVisible = true
+                                }
                                 when (movieRes.sortType) {
                                     SortType.TRENDING -> {
                                         trendingAdapter.submitList(response.data?.items?.take(4))

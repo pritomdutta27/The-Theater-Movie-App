@@ -43,12 +43,11 @@ class MovieViewModel @Inject constructor(
                 popularDeferred = async { repository.fetchTopRatedMovies() }
                 trendingDeferred = async { repositoryTrending.fetchTrendingMovies() }
             }
-
-            _movies.postValue(listOf(
+            _movies.value = listOf(
                 FeedWrapper(nowPlayingDeferred.await(), R.string.now_showing, SortType.NOW_PLAYING),
                 FeedWrapper(popularDeferred.await(), R.string.popular, SortType.MOST_POPULAR),
                 FeedWrapper(trendingDeferred.await(), R.string.trending, SortType.TRENDING),
-            ))
+            )
         }
     }
 }

@@ -6,33 +6,87 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".TvShowFragment">
 
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/merriweather_bold"
+        android:padding="@dimen/_10sdp"
+        android:gravity="center"
+        android:text="@string/tv_series_zone"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+        <!-- Adding 15 rows of placeholders -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@color/gray" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp">
+
+                <include layout="@layout/shimmer_placeholder_layout_top" />
+
+                <include layout="@layout/shimmer_placeholder_layout_top" />
+
+                <include layout="@layout/shimmer_placeholder_layout_top" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@color/gray" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
     <com.pritom.assets.ui.SaveScrollNestedScrollViewer
         android:id="@+id/scroll_tv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/_50sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_marginTop="@dimen/_15sdp"
             android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/merriweather_bold"
-                android:padding="@dimen/_10sdp"
-                android:gravity="center"
-                android:text="@string/tv_series_zone"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_13ssp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

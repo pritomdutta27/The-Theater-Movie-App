@@ -73,7 +73,6 @@ fun <T : Any> Flow<T>.onException(): Flow<NetworkResult<T>> {
                     emit(NetworkResult.Error(code = 404,message = UNKNOWN_NETWORK_EXCEPTION))
                 }
             }
-
         }
     }
 }

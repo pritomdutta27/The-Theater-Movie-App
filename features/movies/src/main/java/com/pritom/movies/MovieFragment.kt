@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -19,10 +20,13 @@ import com.pritom.movies.adpaters.now_show.NowShowingAdapter
 import com.pritom.movies.adpaters.popular.PopularAdapter
 import com.pritom.movies.databinding.FragmentMovieBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 @AndroidEntryPoint
@@ -31,13 +35,19 @@ class MovieFragment : Fragment() {
     private var binding: FragmentMovieBinding? = null
     private val viewModel: MovieViewModel by viewModels()
 
-    private val nowShowingAdapter: NowShowingAdapter by lazy { NowShowingAdapter{
-        findNavController().navigate(R.id.action_movieFragment_to_detailsFragment)
-    } }
+    private val nowShowingAdapter: NowShowingAdapter by lazy {
+        NowShowingAdapter {
+            findNavController().navigate(R.id.action_movieFragment_to_detailsFragment)
+        }
+    }
     private val popularAdapter: PopularAdapter by lazy { PopularAdapter() }
     private val trendingAdapter: PopularAdapter by lazy { PopularAdapter() }
     private var myScrollViewerInstanceState: Parcelable? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getMovies()
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,6 +58,9 @@ class MovieFragment : Fragment() {
         if (myScrollViewerInstanceState != null) {
             binding?.movieScrollView?.onRestoreInstanceState(myScrollViewerInstanceState)
         }
+        binding?.shimmerFrameLayout?.isVisible = myScrollViewerInstanceState == null
+        binding?.movieScrollView?.isVisible = myScrollViewerInstanceState != null
+
         return binding?.root
     }
 
@@ -70,19 +83,20 @@ class MovieFragment : Fragment() {
         binding?.rvNowShowing?.apply {
             addItemDecoration(EqualSpacingItemDecoration(0))
             adapter = nowShowingAdapter
+            setHasFixedSize(true)
         }
 
         binding?.rvPopular?.apply {
             addItemDecoration(EqualSpacingItemDecoration(20))
             adapter = popularAdapter
+            setHasFixedSize(true)
         }
 
         binding?.rvTrending?.apply {
             addItemDecoration(EqualSpacingItemDecoration(20))
             adapter = trendingAdapter
+            setHasFixedSize(true)
         }
-
-        viewModel.getMovies()
         apiResponse()
     }
 
@@ -101,8 +115,16 @@ class MovieFragment : Fragment() {
                                 ).show()
                             }
 
-                            is NetworkResult.Loading -> {}
+                            is NetworkResult.Loading -> {
+                                binding?.shimmerFrameLayout?.isVisible = true
+                                binding?.movieScrollView?.isVisible = false
+                            }
+
                             is NetworkResult.Success -> {
+                                withContext(Dispatchers.Main) {
+                                    binding?.shimmerFrameLayout?.isVisible = false
+                                    binding?.movieScrollView?.isVisible = true
+                                }
                                 when (movieRes.sortType) {
                                     SortType.TRENDING -> {
                                         trendingAdapter.submitList(response.data?.items?.take(4))

@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.lifecycle.livedataKtx)
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.recyclerview)
+    implementation (libs.shimmer.layout)
 
     implementation(libs.sdp)
     implementation(libs.ssp)

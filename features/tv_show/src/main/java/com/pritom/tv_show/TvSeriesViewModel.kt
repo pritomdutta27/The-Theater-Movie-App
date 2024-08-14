@@ -45,11 +45,11 @@ class TvSeriesViewModel @Inject constructor(
                 trendingDeferred = async { repositoryTrending.fetchTrendingTvSeries() }
             }
 
-            _tvSeries.postValue(listOf(
+            _tvSeries.value = listOf(
                 FeedWrapper(nowPlayingDeferred.await(), R.string.on_the_air, SortType.NOW_PLAYING),
                 FeedWrapper(popularDeferred.await(), R.string.tv_popular, SortType.MOST_POPULAR),
                 FeedWrapper(trendingDeferred.await(), R.string.tv_trending, SortType.TRENDING),
-            ))
+            )
         }
     }
 }
