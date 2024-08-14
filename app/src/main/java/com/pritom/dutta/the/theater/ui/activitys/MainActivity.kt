@@ -87,11 +87,15 @@ class MainActivity : AppCompatActivity() {
                     if (pressedTime + 2000 > System.currentTimeMillis()) {
                         finish()
                     } else {
-                        Snackbar.make(
+                        val actionSnack = Snackbar.make(
                             binding?.main!!,
                             getString(R.string.press_back_again),
                             Snackbar.LENGTH_LONG
-                        ).show()
+                        )
+                        actionSnack.setAction(R.string.leave){
+                            finish()
+                        }
+                        actionSnack.show()
                     }
                     pressedTime = System.currentTimeMillis()
                 }
