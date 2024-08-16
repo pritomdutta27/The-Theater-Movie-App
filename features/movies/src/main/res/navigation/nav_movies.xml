@@ -19,5 +19,22 @@
         android:id="@+id/detailsFragment"
         android:name="com.pritom.details.DetailsFragment"
         android:label="DetailsFragment"
-        tools:layout="@layout/fragment_details"/>
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="movie_id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="movie_name"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="movie_details"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="poster_img_url"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

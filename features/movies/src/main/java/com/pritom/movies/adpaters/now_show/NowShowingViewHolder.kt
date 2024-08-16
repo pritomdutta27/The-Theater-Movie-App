@@ -14,9 +14,9 @@ class NowShowingViewHolder(
 ) : BaseViewHolder<NowShowingItemBinding>(
     binding = NowShowingItemBinding.inflate(inflater, parent, false)
 ) {
-    fun bind(data: Movie, onClick: ()->Unit){
+    fun bind(data: Movie, onClick: (data: Movie)->Unit){
         itemView.setOnClickListener {
-            onClick()
+            onClick(data)
         }
         binding.txtMovieTitle.text = data.title
         val rating = String.format("%.1f", data.voteAverage)

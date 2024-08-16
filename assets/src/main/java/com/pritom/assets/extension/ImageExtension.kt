@@ -7,9 +7,9 @@ import com.pritom.assets.R
 
 fun ImageView.loadImage(url: String?) {
     if (!url.isNullOrEmpty()) {
-        Glide.with(this).load(url).placeholder(R.drawable.movie_nav_ic)
-            .error(R.drawable.settings_nav_ic).into(this)
+        Glide.with(this).load(url).placeholder(R.drawable.no_image_placeholder)
+            .error(R.drawable.no_image_placeholder).into(this)
     } else {
-        Glide.with(this).load(R.drawable.settings_nav_ic).into(this)
+        Glide.with(this).load(R.drawable.no_image_placeholder).into(this)
     }
 }

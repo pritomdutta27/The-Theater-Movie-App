@@ -1,6 +1,10 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinx.parcelize)
+    alias(libs.plugins.hilt.android)
+    alias(libs.plugins.navigation.safeargs)
 }
 
 android {
@@ -48,6 +52,11 @@ dependencies {
     implementation (libs.navigation.ui.ktx)
     implementation(libs.lifecycle.livedataKtx)
     implementation(libs.lifecycle.viewmodel.ktx)
+
+    // Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.gson.gson)
 
     //Own Module
     implementation(project(":network:data"))

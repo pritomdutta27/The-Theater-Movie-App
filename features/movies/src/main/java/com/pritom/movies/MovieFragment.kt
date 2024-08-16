@@ -2,7 +2,6 @@ package com.pritom.movies
 
 import android.os.Bundle
 import android.os.Parcelable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.my.esheba.helper.EqualSpacingItemDecoration
 import com.pritom.dutta.movie.data.SortType
 import com.pritom.dutta.movie.domain.utils.NetworkResult
@@ -21,10 +19,6 @@ import com.pritom.movies.adpaters.popular.PopularAdapter
 import com.pritom.movies.databinding.FragmentMovieBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -36,8 +30,12 @@ class MovieFragment : Fragment() {
     private val viewModel: MovieViewModel by viewModels()
 
     private val nowShowingAdapter: NowShowingAdapter by lazy {
-        NowShowingAdapter {
-            findNavController().navigate(R.id.action_movieFragment_to_detailsFragment)
+        NowShowingAdapter { data ->
+            val action = MovieFragmentDirections.actionMovieFragmentToDetailsFragment(
+                data.title, data.overview, data.backdropUrl
+            )
+            action.movieId = data.id
+            findNavController().navigate(action)
         }
     }
     private val popularAdapter: PopularAdapter by lazy { PopularAdapter() }
@@ -48,6 +46,7 @@ class MovieFragment : Fragment() {
         super.onCreate(savedInstanceState)
         viewModel.getMovies()
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -77,9 +76,6 @@ class MovieFragment : Fragment() {
 
     private fun initUI() {
 
-//        nowShowingAdapter.stateRestorationPolicy = PREVENT_WHEN_EMPTY
-//        val linearLayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-//        linearLayoutManager.onRestoreInstanceState()
         binding?.rvNowShowing?.apply {
             addItemDecoration(EqualSpacingItemDecoration(0))
             adapter = nowShowingAdapter
