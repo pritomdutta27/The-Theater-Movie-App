@@ -1,18 +1,17 @@
 package com.pritom.details
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
+import com.google.android.material.chip.Chip
 import com.my.esheba.helper.GridSpacingItemDecoration
+import com.pritom.assets.extension.getDateTime
 import com.pritom.assets.extension.loadImage
 import com.pritom.details.adapters.CastAdapter
 import com.pritom.details.adapters.company.CompanyAdapter
@@ -20,8 +19,8 @@ import com.pritom.details.databinding.FragmentDetailsBinding
 import com.pritom.dutta.movie.domain.utils.DataSourceConstants
 import com.pritom.dutta.movie.domain.utils.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
@@ -30,7 +29,8 @@ class DetailsFragment : Fragment() {
     private val castAdapter: CastAdapter by lazy { CastAdapter() }
     private val productionCompanyAdapter: CompanyAdapter by lazy { CompanyAdapter() }
     private val viewModel: DetailsViewModel by viewModels()
-//    private val args: DetailsFragment by navArgs()
+
+    //    private val args: DetailsFragment by navArgs()
     private var movieName = ""
     private var movieDetails = ""
     private var posterUrl = ""
@@ -38,7 +38,7 @@ class DetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let { arg->
+        arguments?.let { arg ->
             movieName = arg.getString("movie_name") ?: ""
             movieDetails = arg.getString("movie_details") ?: ""
             posterUrl = arg.getString("poster_img_url") ?: ""
@@ -72,7 +72,7 @@ class DetailsFragment : Fragment() {
         }
     }
 
-    private fun updateData(){
+    private fun updateData() {
         binding?.apply {
             txtMovieTitle.text = movieName
             txtMovieTitleToolbar.text = movieName
@@ -91,11 +91,13 @@ class DetailsFragment : Fragment() {
     private fun apiResponse() {
         viewModel.moviesDetails.observe(viewLifecycleOwner) { data ->
             lifecycleScope.launch {
-                data.details.collect { details->
+                data.details.collect { details ->
                     when (details) {
                         is NetworkResult.Error -> {
-                            Toast.makeText(requireContext(), details.message, Toast.LENGTH_LONG).show()
+                            Toast.makeText(requireContext(), details.message, Toast.LENGTH_LONG)
+                                .show()
                         }
+
                         is NetworkResult.Loading -> {}
 
                         is NetworkResult.Success -> {
@@ -105,6 +107,22 @@ class DetailsFragment : Fragment() {
                                 binding?.apply {
                                     txtRating.text = "${rating}/10"
                                     txtLanguage.text = spokenLanguages[0].name
+                                    txtRuntimePg.text = runtime.toString()
+                                    txtReleaseDate.text =
+                                        releaseDate?.getDateTime("yyyy-MM-dd", "MMM, dd yyyy")
+
+                                    for (index in genres.indices) {
+                                        val chip = LayoutInflater.from(context).inflate(
+                                            R.layout.item_chip_category,
+                                            chipCategory,
+                                            false
+                                        ) as Chip
+                                        chip.text = genres[index].name.uppercase()
+                                        // necessary to get single selection working
+                                        chip.isClickable = false
+                                        chip.isCheckable = false
+                                        chipCategory.addView(chip)
+                                    }
                                 }
                             }
                         }
@@ -113,11 +131,13 @@ class DetailsFragment : Fragment() {
             }
 
             lifecycleScope.launch {
-                data.cast.collect { castData->
+                data.cast.collect { castData ->
                     when (castData) {
                         is NetworkResult.Error -> {
-                            Toast.makeText(requireContext(), castData.message, Toast.LENGTH_LONG).show()
+                            Toast.makeText(requireContext(), castData.message, Toast.LENGTH_LONG)
+                                .show()
                         }
+
                         is NetworkResult.Loading -> {}
 
                         is NetworkResult.Success -> {

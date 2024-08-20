@@ -167,46 +167,14 @@
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chip_category"
                 android:layout_width="0dp"
+                style="@style/Widget.MaterialComponents.Chip.Action"
                 android:layout_height="wrap_content"
+                app:chipSpacingHorizontal="@dimen/_4sdp"
+                app:chipSpacingVertical="-10dp"
                 android:layout_marginTop="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="@+id/ll_rating"
                 app:layout_constraintStart_toStartOf="@+id/ll_rating"
-                app:layout_constraintTop_toBottomOf="@+id/ll_rating">
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip"
-                    style="@style/Widget.MaterialComponents.Chip.Action"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_35sdp"
-                    android:backgroundTint="#DBE3FF"
-                    android:fontFamily="@font/mulish_regular"
-                    android:text="HORROR"
-                    android:textColor="#88A4E8"
-                    android:textSize="@dimen/_9ssp" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip2"
-                    style="@style/Widget.MaterialComponents.Chip.Action"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_35sdp"
-                    android:backgroundTint="#DBE3FF"
-                    android:fontFamily="@font/mulish_regular"
-                    android:text="MYSTERY"
-                    android:textColor="#88A4E8"
-                    android:textSize="@dimen/_9ssp" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip4"
-                    style="@style/Widget.MaterialComponents.Chip.Action"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_35sdp"
-                    android:backgroundTint="#DBE3FF"
-                    android:fontFamily="@font/mulish_regular"
-                    android:text="THRILLER"
-                    android:textColor="#88A4E8"
-                    android:textSize="@dimen/_9ssp" />
-
-            </com.google.android.material.chip.ChipGroup>
+                app:layout_constraintTop_toBottomOf="@+id/ll_rating"/>
 
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -227,15 +195,15 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txt_length_title"
+                        android:id="@+id/txt_release_date_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_2sdp"
                         android:ellipsize="end"
                         android:fontFamily="@font/mulish_regular"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
                         android:lines="1"
-                        android:text="@string/length"
+                        android:text="@string/release_date"
                         android:textColor="@color/gray_see_more"
                         android:textSize="@dimen/_11ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -244,14 +212,14 @@
                         app:layout_constraintTop_toBottomOf="@+id/cl_image" />
 
                     <TextView
-                        android:id="@+id/txt_length"
+                        android:id="@+id/txt_release_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_2sdp"
                         android:layout_marginTop="@dimen/_2sdp"
                         android:ellipsize="end"
                         android:fontFamily="@font/mulish_semi_bold"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
                         android:lines="1"
                         tools:text="2h 28min"
                         android:textColor="@color/black"
@@ -276,7 +244,7 @@
                         android:layout_marginStart="@dimen/_2sdp"
                         android:ellipsize="end"
                         android:fontFamily="@font/mulish_regular"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
                         android:lines="1"
                         android:text="@string/language"
                         android:textColor="@color/gray_see_more"
@@ -294,7 +262,7 @@
                         android:layout_marginTop="@dimen/_2sdp"
                         android:ellipsize="end"
                         android:fontFamily="@font/mulish_semi_bold"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
                         android:lines="1"
                         tools:text="English"
                         android:textColor="@color/black"
@@ -313,15 +281,15 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txt_rating_title"
+                        android:id="@+id/txt_runtime_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_2sdp"
                         android:ellipsize="end"
                         android:fontFamily="@font/mulish_regular"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
                         android:lines="1"
-                        android:text="@string/rating"
+                        android:text="@string/runtime"
                         android:textColor="@color/gray_see_more"
                         android:textSize="@dimen/_11ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -330,14 +298,14 @@
                         app:layout_constraintTop_toBottomOf="@+id/cl_image" />
 
                     <TextView
-                        android:id="@+id/txt_rating_pg"
+                        android:id="@+id/txt_runtime_pg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_2sdp"
                         android:layout_marginTop="@dimen/_2sdp"
                         android:ellipsize="end"
                         android:fontFamily="@font/mulish_semi_bold"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
                         android:lines="1"
                         tools:text="PG-13"
                         android:textColor="@color/black"
