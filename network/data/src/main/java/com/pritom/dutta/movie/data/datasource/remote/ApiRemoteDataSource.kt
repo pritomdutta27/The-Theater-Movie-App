@@ -17,4 +17,6 @@ class ApiRemoteDataSource @Inject constructor(private val api: MovieApiService) 
     suspend fun invokeTrending(page: Int = 1) = api.fetchTrendingMovie(page).onResponse()
 
     suspend fun invokeDetails(id: Int) = api.fetchMovieDetails(id).onResponse()
+
+    suspend fun invokeMovieActors(id: Int) = api.fetchMovieActors(id).onResponse()
 }

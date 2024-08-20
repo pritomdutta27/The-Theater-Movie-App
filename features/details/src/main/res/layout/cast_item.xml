@@ -10,7 +10,7 @@
         android:id="@+id/img_cast"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_55sdp"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         app:shapeAppearanceOverlay="@style/RoundedSquare"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

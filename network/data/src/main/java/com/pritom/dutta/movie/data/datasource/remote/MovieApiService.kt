@@ -3,6 +3,7 @@ package com.pritom.dutta.movie.data.datasource.remote
 import com.pritom.dutta.movie.domain.models.Movie
 import com.pritom.dutta.movie.domain.models.MovieDetailsModel
 import com.pritom.dutta.movie.domain.models.TmdbWrapperModel
+import com.pritom.dutta.movie.domain.models.cast.CastResponseModel
 import com.pritom.dutta.movie.domain.utils.DataSourceConstants
 import retrofit2.Response
 import retrofit2.http.GET
@@ -26,6 +27,7 @@ interface MovieApiService {
     @GET("movie/{movie_id}?api_key=${DataSourceConstants.API_KEY}&language=en-US")
     suspend fun fetchMovieDetails(@Path("movie_id") movieId: Int): Response<MovieDetailsModel>
 
-//    @GET("movie/{id}?api_key=${DataSourceConstants.API_KEY}&language=en-US")
-//    suspend fun fetchMovieDetails(@Path("id") id: Int): NetworkResult<MovieDetails>
+    @GET("movie/{movie_id}/credits?api_key=${DataSourceConstants.API_KEY}&language=en-US")
+    suspend fun fetchMovieActors(@Path("movie_id") movieId: Int): Response<CastResponseModel>
+
 }

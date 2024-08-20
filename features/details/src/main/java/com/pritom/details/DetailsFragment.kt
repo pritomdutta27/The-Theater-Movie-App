@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.my.esheba.helper.GridSpacingItemDecoration
@@ -19,6 +20,8 @@ import com.pritom.details.databinding.FragmentDetailsBinding
 import com.pritom.dutta.movie.domain.utils.DataSourceConstants
 import com.pritom.dutta.movie.domain.utils.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
@@ -87,22 +90,45 @@ class DetailsFragment : Fragment() {
 
     private fun apiResponse() {
         viewModel.moviesDetails.observe(viewLifecycleOwner) { data ->
-           when(data){
-               is NetworkResult.Error -> {Toast.makeText(requireContext(), data.message, Toast.LENGTH_LONG).show()}
-               is NetworkResult.Loading -> {
+            lifecycleScope.launch {
+                data.details.collect { details->
+                    when (details) {
+                        is NetworkResult.Error -> {
+                            Toast.makeText(requireContext(), details.message, Toast.LENGTH_LONG).show()
+                        }
+                        is NetworkResult.Loading -> {}
 
-               }
-               is NetworkResult.Success -> {
-                   data.data?.apply {
-                       val rating = String.format("%.1f", voteAverage)
-                       productionCompanyAdapter.submitList(productionCompanies)
-                       binding?.apply {
-                           txtRating.text = "${rating}/10"
-                           txtLanguage.text = spokenLanguages[0].name
-                       }
-                   }
-               }
-           }
+                        is NetworkResult.Success -> {
+                            details.data?.apply {
+                                val rating = String.format("%.1f", voteAverage)
+                                productionCompanyAdapter.submitList(productionCompanies)
+                                binding?.apply {
+                                    txtRating.text = "${rating}/10"
+                                    txtLanguage.text = spokenLanguages[0].name
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            lifecycleScope.launch {
+                data.cast.collect { castData->
+                    when (castData) {
+                        is NetworkResult.Error -> {
+                            Toast.makeText(requireContext(), castData.message, Toast.LENGTH_LONG).show()
+                        }
+                        is NetworkResult.Loading -> {}
+
+                        is NetworkResult.Success -> {
+                            castData.data?.apply {
+                                castAdapter.submitList(cast)
+                            }
+                        }
+                    }
+                }
+            }
+
         }
     }
 
