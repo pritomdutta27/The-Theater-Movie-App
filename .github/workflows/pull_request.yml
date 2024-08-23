@@ -3,6 +3,8 @@ name: Run test
 on:
   pull_request:
     branches: [main]
+  push:
+    branches: [main]
 
 
 jobs:
@@ -10,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup JDK 17
         uses: actions/setup-java@v4
