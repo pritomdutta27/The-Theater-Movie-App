@@ -17,12 +17,14 @@ class PopularViewHolder(
     binding = PopularItemBinding.inflate(inflater, parent, false)
 ) {
 
-    fun bind(data: Movie){
+    fun bind(data: Movie, onClick: (data: Movie) -> Unit){
 
         itemView.layoutParams = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
+
+        itemView.setOnClickListener { onClick(data) }
 
         binding.txtMovieTitle.text = data.title
         val rating = String.format("%.1f", data.voteAverage)
