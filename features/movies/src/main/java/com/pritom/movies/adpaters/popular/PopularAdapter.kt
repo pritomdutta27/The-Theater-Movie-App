@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pritom.assets.base_adapter.BaseListAdapter
 import com.pritom.dutta.movie.domain.models.Movie
 
-class PopularAdapter() :
+class PopularAdapter(private val onClick: (data: Movie) -> Unit) :
     BaseListAdapter<Movie>(
         itemsSame = { old, new -> old == new },
         contentsSame = { old, new -> old == new }) {
@@ -19,7 +19,7 @@ class PopularAdapter() :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
             is PopularViewHolder->{
-                holder.bind(getItem(position))
+                holder.bind(getItem(position), onClick)
             }
         }
     }

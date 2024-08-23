@@ -38,8 +38,20 @@ class MovieFragment : Fragment() {
             findNavController().navigate(action)
         }
     }
-    private val popularAdapter: PopularAdapter by lazy { PopularAdapter() }
-    private val trendingAdapter: PopularAdapter by lazy { PopularAdapter() }
+    private val popularAdapter: PopularAdapter by lazy { PopularAdapter{ movie->
+        val action = MovieFragmentDirections.actionMovieFragmentToDetailsFragment(
+            movie.title, movie.overview, movie.backdropUrl
+        )
+        action.movieId = movie.id
+        findNavController().navigate(action)
+    } }
+    private val trendingAdapter: PopularAdapter by lazy { PopularAdapter{ movie->
+        val action = MovieFragmentDirections.actionMovieFragmentToDetailsFragment(
+            movie.title, movie.overview, movie.backdropUrl
+        )
+        action.movieId = movie.id
+        findNavController().navigate(action)
+    } }
     private var myScrollViewerInstanceState: Parcelable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
