@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlinx.parcelize)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.navigation.safeargs)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -36,6 +37,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+//            fireba {
+//                appId = "1:12345678:android:12345678abc"
+//                releaseNotes = "test"
+//                groups = "android-qa"
+//                serviceCredentialsFile = "android-app-distribution-key.json"
+//            }
         }
     }
     compileOptions {
