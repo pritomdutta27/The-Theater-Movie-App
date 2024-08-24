@@ -25,6 +25,9 @@ jobs:
           java-version: 17
           cache: 'gradle'
 
+      - name: Grant execute permissions for gradlew
+        run: chmod +x ./gradlew
+
       - name: gradle command-build debug
         run: ./gradlew assembleDebug
 
