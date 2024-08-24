@@ -45,3 +45,4 @@ jobs:
           groups: testers
           file: app/build/outputs/apk/debug/app-debug.apk
           releaseNotes: ${{ inputs.release_notes }}
+          debug: true
