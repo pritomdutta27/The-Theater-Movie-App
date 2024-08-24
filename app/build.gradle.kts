@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.kotlinx.parcelize)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.navigation.safeargs)
-    id("com.google.gms.google-services")
+//    id("com.google.gms.google-services")
 }
 
 android {
